@@ -9,8 +9,7 @@ var listOwnSymbols = fav.prop.listOwnSymbols;
 
 describe('fav.prop.listOwnSymbols', function() {
 
-  it('Should get all property symbols when the argument is a plain object',
-  function() {
+  it('Should get all own prop symbols when arg is a plain object', function() {
     if (typeof Symbol !== 'function') {
       this.skip();
       return;
@@ -84,8 +83,13 @@ describe('fav.prop.listOwnSymbols', function() {
     expect(listOwnSymbols('abc')).to.have.members([]);
   });
 
-  it('Should return appended property symbols when the argument is a non ' +
-  '\n\tplan object', function() {
+  it('Should return appended prop symbols when arg is a non-plan object',
+  function() {
+    if (typeof Symbol !== 'function') {
+      this.skip();
+      return;
+    }
+
     var s0 = Symbol('s0');
     var s1 = Symbol('s1');
 
